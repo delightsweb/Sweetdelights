@@ -1,0 +1,339 @@
+:root {
+    --primary: #3b0ffd; /* Rosa pastel vibrante */
+    --primary-hover: #f17286;
+    --dark: #2d3748;
+    --text: #4a5568;
+    --bg-light: #fef6f8; /* Fondo sutilmente cálido */
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    /* Ruta de tu imagen */
+    background-image: url('Copilot_20260630_015101.png'); 
+    
+    /* Centrar la imagen */
+    background-position: center; 
+    
+    /* Que la imagen cubra toda la pantalla */
+    background-size: cover; 
+    
+    /* Que la imagen no se repita */
+    background-repeat: no-repeat; 
+    
+    /* Que la imagen se quede fija al hacer scroll (efecto paralaje suave) */
+    background-attachment: fixed; 
+    
+    /* Un color de fondo base por si la imagen tarda en cargar */
+    background-color: #fef6f8; 
+}
+
+
+/* Fondo animado y suave */
+.background-pastel-gradient {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(circle at top left, #ffe4e8 0%, transparent 40%),
+                radial-gradient(circle at bottom right, #e2f1ff 0%, transparent 40%);
+    z-index: -1;
+}
+
+/* Título Animado */
+.modern-header {
+    text-align: center;
+    padding: 3rem 1rem 1rem;
+    animation: floatTitle 4s ease-in-out infinite; /* Flotación suave */
+}
+
+.brand-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #f10797;
+    letter-spacing: -1.5px;
+    
+    /* Contorno sutil */
+    -webkit-text-stroke: 1px rgba(0,0,0,0.5); 
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+
+/* Animación de colores en la palabra "Delights" */
+.pastel-text {
+    background: linear-gradient(45deg, #e484cf, #e92375, #207fac);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 5s ease infinite;
+}
+
+.brand-subtitle {
+    /* Cambio de fuente */
+    font-family: 'fantasy', papyrus, sans-serif;
+    
+    /* Cambio de color (puedes usar nombres, hex o rgba) */
+    color: #797c74; 
+    
+    /* Tamaño y peso */
+    font-size: 1.8rem;
+    font-weight: 300;
+    
+    /* Opcional: Centrado y espaciado */
+    text-align: center;
+    margin-top: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* Layout del Carrusel (Animación Flex) */
+.menu-section {
+    padding: 2rem 1rem 4rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Tarjetas y Animación Flex */
+.card {
+    background: var(--white);
+    border-radius: 24px;
+    flex: 1; /* Comportamiento base de flexbox */
+    min-width: 240px;
+    transition: flex 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                opacity 0.4s ease;
+    opacity: 0.65;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f7fafc;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 180px;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: #718096;
+}
+
+/* Badges Tonos Pastel */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+}
+
+.badge-rosa { background: #ffe4e8; color: #d03c58; }
+.badge-menta { background: #e6fffa; color: #285e61; }
+.badge-lavanda { background: #faf5ff; color: #6b46c1; }
+.badge-amarillo { background: #fffff0; color: #975a16; }
+
+/* Efecto de Tarjeta Activa (Se expande usando flex) */
+.card.active {
+    flex: 1.25; /* Ocupa más espacio en el contenedor flex */
+    transform: scale(1.02);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(248, 150, 166, 0.15);
+    border-color: transparent;
+}
+
+.card.active .img-wrapper img {
+    transform: scale(1.08); 
+}
+/* Asegura que el contenedor de imágenes sea el marco */
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    border-radius: 24px 24px 0 0;
+}
+
+/* El carrusel debe ocupar el 100% */
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.slider-track img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilo moderno para los botones */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 10;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    opacity: 0; /* Ocultos por defecto */
+    transition: 0.3s;
+}
+
+/* Aparecen al pasar el mouse por encima de la tarjeta */
+.card:hover .slider-btn {
+    opacity: 1;
+}
+
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+/* Botones y UI interactiva */
+.btn-flavors, .btn-wa {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-flavors {
+    background: var(--bg-light);
+    color: var(--primary-hover);
+    border: 1px solid #ffe4e8;
+}
+
+.btn-flavors:hover {
+    background: #ffe4e8;
+    color: #d03c58;
+}
+
+.btn-wa {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(248, 150, 166, 0.3);
+}
+
+.btn-wa:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(248, 150, 166, 0.4);
+}
+
+/* Menú de sabores */
+.flavors-container {
+    width: 100%;
+    margin-bottom: 1rem;
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 0.5rem;
+}
+
+.lista-sabores { list-style: none; }
+
+.lista-sabores li {
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.lista-sabores li:hover {
+    background: #ffe4e8;
+    color: #d03c58;
+}
+
+/* Flechas */
+.nav-arrow {
+    background: var(--white);
+    border: 1px solid #edf2f7;
+    color: var(--text);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 20;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.nav-arrow:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.oculto { display: none !important; }
+
+/* Keyframes */
+@keyframes floatTitle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

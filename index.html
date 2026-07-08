@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights | Menú Interactivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css.css">
+    <style>
+        /* Estilos para el botón de Instagram */
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #e1306c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .instagram-link:hover { transform: scale(1.05); }
+
+        /* Estilo para la imagen de toppings fija en esquina */
+        .toppings-fixed-corner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 270px; /*  tamaño */
+            z-index: 1000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid rgb(236, 16, 170);
+        }
+    </style>
+</head>
+<body>  <!-- Cover -->
+
+<img src="1000163761.png" alt="Toppings" class="toppings-fixed-corner"> <!-- Imagen de toppings fija en la esquina inferior derecha -->
+
+    <div class="background-pastel-gradient"></div>
+
+    <header class="modern-header">
+        <h1 class="brand-title">Sweet <span class="pastel-text">Delights</span></h1>
+        <p class="brand-subtitle">Dulzura premium a un clic de distancia.</p>
+        <p class="brand-title"> By <span class="pastel-text"> Melinda Villalta</span> </p>
+        <a href="https://www.instagram.com/sweet_delight_s?igsh=M25vZnZzMGppNHNt" target="_blank" class="instagram-link">
+            📸 Síguenos en Instagram
+        </a>
+    </header>
+<!-- Estructura carrucel de productos -->
+    <section class="menu-section">
+        <div class="carousel-container">
+            <button class="nav-arrow" id="arrow-left">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <div class="carousel-track" id="track">
+                
+                <article class="card">
+                    <div class="img-wrapper">
+                        <div class="slider-track">
+                            <img src="IMG-20260629-WA0018.jpg" alt="Producto 1">
+                            <img src="IMG-20260629-WA0019.jpg" alt="Producto 2">
+                            <img src="IMG-20260629-WA0020.jpg" alt="Producto 3">
+                            <img src="IMG-20260629-WA0022.jpg" alt="Producto 4">
+                            <img src="IMG-20260629-WA0023.jpg" alt="Producto 5">
+                            <img src="IMG-20260629-WA0021.jpg" alt="Producto 6">
+                        </div>
+                        <button class="slider-btn prev">❮</button>
+                        <button class="slider-btn next">❯</button>
+                    </div>
+                    <div class="card-content">
+                        <h3>Pasteles de Celebración</h3>
+                        <p>Bizcochos húmedos con diseños modernos y elegantes.</p>
+                        <span class="badge badge-lavanda">🎂 Personalizados</span>
+                        <div class="flavors-container oculto">
+                            <ul class="lista-sabores">
+                                <li data-sabor="Chocolate Suizo">Chocolate Suizo</li>
+                                <li data-sabor="Vainilla Gourmet">Vainilla Gourmet</li>
+                            </ul>
+                        </div>
+                        <button class="btn-flavors">Ver Sabores</button>
+                        
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="img-wrapper">
+                        <div class="slider-track">
+                            <img src="IMG-20260629-WA0024.jpg" alt="Producto 1">
+                            <img src="IMG-20260629-WA0025.jpg" alt="Producto 2">
+                            <img src="IMG-20260629-WA0026.jpg" alt="Producto 3">
+                        </div>
+                        <button class="slider-btn prev">❮</button>
+                        <button class="slider-btn next">❯</button>
+                    </div>
+                    <div class="card-content">
+                        <h3>Crepas Especiales</h3>
+                        <p>Masa francesa original, delgada y con rellenos abundantes.</p>
+                        <span class="badge badge-menta">⭐ Top Ventas</span>
+                        <div class="flavors-container oculto">
+                            <ul class="lista-sabores">
+                                <li data-sabor="Nutella y Fresa">Nutella y Fresa</li>
+                                <li data-sabor="Dulce de Leche">Dulce de Leche</li>
+                            </ul>
+                        </div>
+                        <button class="btn-flavors">Ver Sabores</button>
+                        
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="img-wrapper">
+                        <div class="slider-track">
+                            <img src="IMG-20260629-WA0027.jpg" alt="Producto 1">
+                            <img src="IMG-20260629-WA0028.jpg" alt="Producto 2">
+                        </div>
+                        <button class="slider-btn prev">❮</button>
+                        <button class="slider-btn next">❯</button>
+                    </div>
+                    <div class="card-content">
+                        <h3>Fresas con Crema</h3>
+                        <p>Fresas frescas bañadas en nuestra crema.</p>
+                        <span class="badge badge-rosa">🍓 Clásico Indiscutible</span>
+                        <div class="flavors-container oculto">
+                            <ul class="lista-sabores">
+                                <li data-sabor="Tradicionales">Tradicionales</li>
+                                <li data-sabor="Con Leche Condensada">Con Leche Condensada</li>
+                                <li data-sabor="Con Nutella">Con Nutella</li>
+                            </ul>
+                        </div>
+                        <button class="btn-flavors">Ver Opciones</button>
+                        <!-- <button class="btn-wa oculto" data-producto="Fresas con Crema">Pedir Ahora 📲</button> -->
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="img-wrapper">
+                        <div class="slider-track">
+                            <img src="IMG-20260629-WA0029.jpg" alt="Producto 1">
+                        </div>
+                        <button class="slider-btn prev">❮</button>
+                        <button class="slider-btn next">❯</button>
+                    </div>
+                    <div class="card-content">
+                        <h3>Caja Mini Donas</h3>
+                        <p>Esponjosas, horneadas al momento para compartir.</p>
+                        <span class="badge badge-amarillo">🍩 Ideales para regalar</span>
+                        <div class="flavors-container oculto">
+                            <ul class="lista-sabores">
+                                <li data-sabor="Caja de 6">Caja de 6 (Mixtas)</li>
+                                <li data-sabor="Caja de 12">Caja de 12 (Mixtas)</li>
+                            </ul>
+                        </div>
+                        <button class="btn-flavors">Ver Opciones</button>
+                        <!--  <button class="btn-wa oculto" data-producto="Caja Mini Donas">Pedir Ahora 📲</button> boton papa pedir aun no confirmado--> 
+                    </div>
+                </article>
+
+            </div>
+
+            <button class="nav-arrow" id="arrow-right">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <script src="js.js"></script>
+</body>
+</html>
