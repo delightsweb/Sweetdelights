@@ -2,486 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- === ESTA ES LA LLAVE PARA MÓVIL === -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Sweet Delights | Menú Interactivo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css.css">
-    <style>
-        /* ===== SOLO AJUSTES MÍNIMOS PARA MÓVIL ===== */
-        
-        /* Esto asegura que en móvil no se corte nada */
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        /* Tu fondo se mantiene exactamente igual */
-        body {
-            background-image: url('Copilot_20260630_015101.png');
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #fef6f8;
-            min-height: 100vh;
-        }
-
-        /* ===== TOPPINGS (se mantiene igual) ===== */
-        .toppings-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .toppings-fixed-corner {
-            width: 150px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border: 2px solid rgb(236, 16, 170);
-            transition: all 0.5s ease;
-        }
-
-        .toppings-fixed-corner:hover {
-            transform: rotate(360deg) scale(1.1);
-        }
-
-        .toppings-label {
-            background: linear-gradient(135deg, #ff6bcb, #ff6b6b);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            box-shadow: 0 2px 8px rgba(236, 16, 170, 0.3);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            animation: floatSimple 2s ease-in-out infinite;
-        }
-
-        @keyframes floatSimple {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        /* ===== BANNER CON OLAS ===== */
-        .wave-banner {
-            background: linear-gradient(135deg, #ff6bcb 0%, #ff6b6b 50%, #ff6bcb 100%);
-            padding: 50px 20px 60px 20px;
-            margin-top: 40px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 -10px 30px rgba(236, 16, 170, 0.1);
-        }
-
-        .wave-banner .wave {
-            position: absolute;
-            bottom: -5px;
-            left: -50%;
-            width: 200%;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-            animation: waveFlow 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .wave-banner .wave:nth-child(2) {
-            bottom: -15px;
-            height: 90px;
-            animation: waveFlow2 10s ease-in-out infinite;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 40% 60% 0 0 / 80% 70% 0 0;
-            animation-delay: -2s;
-        }
-
-        .wave-banner .wave:nth-child(3) {
-            bottom: -25px;
-            height: 110px;
-            animation: waveFlow 12s ease-in-out infinite reverse;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 60% 40% 0 0 / 60% 80% 0 0;
-            animation-delay: -4s;
-        }
-
-        .wave-banner .wave-top {
-            position: absolute;
-            top: -5px;
-            left: -50%;
-            width: 200%;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 0 0 50% 50% / 0 0 100% 100%;
-            animation: waveFlow2 9s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .wave-banner .wave-top:nth-child(4) {
-            top: -15px;
-            height: 70px;
-            animation: waveFlow 11s ease-in-out infinite reverse;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 0 0 40% 60% / 0 0 70% 80%;
-            animation-delay: -3s;
-        }
-
-        @keyframes waveFlow {
-            0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-25%) scaleY(1.1); }
-            100% { transform: translateX(-50%) scaleY(1); }
-        }
-
-        @keyframes waveFlow2 {
-            0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-30%) scaleY(0.9); }
-            100% { transform: translateX(-60%) scaleY(1); }
-        }
-
-        .wave-banner-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            padding: 10px;
-        }
-
-        .wave-banner-text {
-            font-size: 2rem;
-            font-weight: 800;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.2);
-            margin-bottom: 5px;
-        }
-
-        .wave-banner-subtext {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            text-shadow: 0 1px 8px rgba(0,0,0,0.15);
-            margin-bottom: 8px;
-        }
-
-        .wave-banner-donuts {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
-
-        .wave-donut {
-            font-size: 2.8rem;
-            animation: floatSimple 2.5s ease-in-out infinite;
-            display: inline-block;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
-            transition: all 0.3s ease;
-        }
-
-        .wave-donut:hover {
-            transform: scale(1.3) rotate(20deg);
-        }
-
-        .wave-donut:nth-child(1) { animation-delay: 0s; }
-        .wave-donut:nth-child(2) { animation-delay: 0.3s; }
-        .wave-donut:nth-child(3) { animation-delay: 0.6s; }
-        .wave-donut:nth-child(4) { animation-delay: 0.9s; }
-        .wave-donut:nth-child(5) { animation-delay: 1.2s; }
-        .wave-donut:nth-child(6) { animation-delay: 1.5s; }
-
-        /* ===== CRÉDITO ===== */
-        .credit {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999;
-            font-size: 0.7rem;
-            color: rgba(0,0,0,0.3);
-            background: rgba(255,255,255,0.8);
-            padding: 4px 14px;
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .credit:hover {
-            color: rgba(236, 16, 170, 0.8);
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        .credit .instagram-icon {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            background: radial-gradient(circle at 30% 30%, #feda77, #d62976, #962fbf, #4f5bd5);
-            border-radius: 3px;
-            color: white;
-            font-size: 8px;
-            line-height: 14px;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .credit a {
-            color: #e1306c;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .credit a:hover {
-            color: #ff6bcb;
-            text-decoration: underline;
-        }
-
-        /* ============================================ */
-        /* ===== SOLO AJUSTES PARA MÓVIL ===== */
-        /* ============================================ */
-
-        @media (max-width: 768px) {
-            /* HEADER - MÁS COMPACTO */
-            .modern-header {
-                padding: 1.5rem 0.8rem 0.5rem !important;
-            }
-
-            .brand-title {
-                font-size: 2.2rem !important;
-            }
-
-            .brand-subtitle {
-                font-size: 0.9rem !important;
-            }
-
-            .brand-author {
-                font-size: 0.9rem !important;
-            }
-
-            .instagram-link {
-                font-size: 0.7rem !important;
-                padding: 5px 12px !important;
-            }
-
-            /* TOPPINGS - MÁS PEQUEÑO */
-            .toppings-container {
-                top: 8px !important;
-                right: 8px !important;
-            }
-
-            .toppings-fixed-corner {
-                width: 65px !important;
-            }
-
-            .toppings-label {
-                font-size: 0.4rem !important;
-                padding: 1px 6px !important;
-            }
-
-            /* CARRUSEL - QUE SE VEA */
-            .carousel-container {
-                padding: 0 5px !important;
-                gap: 5px !important;
-            }
-
-            .carousel-track {
-                gap: 10px !important;
-                padding: 10px 0 !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
-            }
-
-            .card {
-                min-width: 180px !important;
-                flex: 0 0 auto !important;
-                opacity: 1 !important;
-            }
-
-            .card.active {
-                flex: 0 0 auto !important;
-                transform: none !important;
-            }
-
-            .img-wrapper {
-                height: 140px !important;
-            }
-
-            .card-content {
-                padding: 0.7rem !important;
-            }
-
-            .card-content h3 {
-                font-size: 0.85rem !important;
-            }
-
-            .card-content p {
-                font-size: 0.65rem !important;
-            }
-
-            .badge {
-                font-size: 0.55rem !important;
-                padding: 2px 8px !important;
-            }
-
-            .slider-btn {
-                opacity: 1 !important;
-                width: 22px !important;
-                height: 22px !important;
-                font-size: 9px !important;
-            }
-
-            .slider-btn.prev { left: 3px !important; }
-            .slider-btn.next { right: 3px !important; }
-
-            /* FLECHAS */
-            .nav-arrow {
-                width: 28px !important;
-                height: 28px !important;
-                flex-shrink: 0 !important;
-            }
-
-            .nav-arrow svg {
-                width: 14px !important;
-                height: 14px !important;
-            }
-
-            /* BANNER */
-            .wave-banner {
-                padding: 25px 12px 35px 12px !important;
-                min-height: 140px !important;
-                margin-top: 25px !important;
-            }
-
-            .wave-banner .wave {
-                height: 35px !important;
-            }
-
-            .wave-banner .wave:nth-child(2) {
-                height: 45px !important;
-            }
-
-            .wave-banner .wave:nth-child(3) {
-                height: 55px !important;
-            }
-
-            .wave-banner .wave-top {
-                height: 25px !important;
-            }
-
-            .wave-banner .wave-top:nth-child(4) {
-                height: 35px !important;
-            }
-
-            .wave-banner-text {
-                font-size: 1.3rem !important;
-            }
-
-            .wave-banner-subtext {
-                font-size: 0.75rem !important;
-            }
-
-            .wave-donut {
-                font-size: 1.8rem !important;
-            }
-
-            .wave-banner-donuts {
-                gap: 8px !important;
-            }
-
-            .credit {
-                font-size: 0.5rem !important;
-                padding: 2px 8px !important;
-                bottom: 5px !important;
-            }
-
-            .credit .instagram-icon {
-                width: 10px !important;
-                height: 10px !important;
-                font-size: 5px !important;
-                line-height: 10px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand-title {
-                font-size: 1.8rem !important;
-            }
-
-            .card {
-                min-width: 150px !important;
-            }
-
-            .img-wrapper {
-                height: 120px !important;
-            }
-
-            .card-content h3 {
-                font-size: 0.75rem !important;
-            }
-
-            .card-content p {
-                font-size: 0.6rem !important;
-            }
-
-            .badge {
-                font-size: 0.5rem !important;
-                padding: 1px 6px !important;
-            }
-
-            .lista-sabores li {
-                font-size: 0.6rem !important;
-                padding: 3px 6px !important;
-            }
-
-            .toppings-fixed-corner {
-                width: 50px !important;
-            }
-
-            .wave-banner-text {
-                font-size: 1rem !important;
-            }
-
-            .wave-donut {
-                font-size: 1.5rem !important;
-            }
-
-            .wave-banner {
-                padding: 20px 10px 30px 10px !important;
-                min-height: 110px !important;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- ===== TOPPINGS ===== -->
     <div class="toppings-container">
         <span class="toppings-label">🧁 Toppings</span>
         <img src="1000163761.png" alt="Toppings" class="toppings-fixed-corner">
+        <span class="toppings-hint">⬇️ Haz clic para ver</span>
     </div>
 
-    <!-- TU FONDO PASTEL -->
+    <!-- FONDO PASTEL -->
     <div class="background-pastel-gradient"></div>
 
-    <!-- TU HEADER - EXACTAMENTE IGUAL -->
+    <!-- ===== HEADER ===== -->
     <header class="modern-header">
         <h1 class="brand-title">Sweet <span class="pastel-text">Delights</span></h1>
         <p class="brand-subtitle">Dulzura premium a un clic de distancia.</p>
-        <p class="brand-author" style="font-family: 'fantasy', papyrus, sans-serif; color: #797c74; font-size: 1.2rem; margin-top: 0.3rem;">
-            By <span class="pastel-text"> Melinda Villalta</span>
+        <p class="brand-author">
+            <span class="heart-icon"></span>
+            <span class="by-text">By</span>
+            <span class="author-name">Melinda Villalta</span>
         </p>
         <a href="https://www.instagram.com/sweet_delight_s?igsh=M25vZnZzMGppNHNt" target="_blank" class="instagram-link">
-            📸 Síguenos en Instagram
+            <span class="ig-icon">📸</span>
+            Síguenos en Instagram
         </a>
     </header>
 
@@ -608,7 +156,7 @@
         <div class="wave-top"></div>
         
         <div class="wave-banner-content">
-            <div class="wave-banner-text">🌊 Dulces olas de sabor 🌊</div>
+            <div class="wave-banner-text"> Bienvenido a SweetDelight </div>
             <div class="wave-banner-subtext">Endulza tu vida con nuestras delicias</div>
             <div class="wave-banner-donuts">
                 <span class="wave-donut">🍩</span>
@@ -626,6 +174,11 @@
         <span class="instagram-icon">📷</span>
         Creado por <a href="https://www.instagram.com/GeisonC28" target="_blank">@GeisonC28</a>
     </div>
+
+    <!-- ===== BOTÓN DE WHATSAPP (opcional) ===== -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50">
+    </a>
 
     <script src="js.js"></script>
 </body>

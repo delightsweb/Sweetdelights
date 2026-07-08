@@ -1,9 +1,10 @@
+/* ===== VARIABLES ===== */
 :root {
-    --primary: #3b0ffd; /* Rosa pastel vibrante */
+    --primary: #3b0ffd;
     --primary-hover: #f17286;
     --dark: #2d3748;
     --text: #4a5568;
-    --bg-light: #fef6f8; /* Fondo sutilmente cálido */
+    --bg-light: #fef6f8;
     --white: #ffffff;
 }
 
@@ -14,26 +15,17 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* ===== FONDO ===== */
 body {
-    /* Ruta de tu imagen */
-    background-image: url('Copilot_20260630_015101.png'); 
-    
-    /* Centrar la imagen */
-    background-position: center; 
-    
-    /* Que la imagen cubra toda la pantalla */
-    background-size: cover; 
-    
-    /* Que la imagen no se repita */
-    background-repeat: no-repeat; 
-    
-    /* Que la imagen se quede fija al hacer scroll (efecto paralaje suave) */
-    background-attachment: fixed; 
-    
-    /* Un color de fondo base por si la imagen tarda en cargar */
-    background-color: #fef6f8; 
+    background-image: url('Copilot_20260630_015101.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #fef6f8;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
-
 
 /* Fondo animado y suave */
 .background-pastel-gradient {
@@ -44,11 +36,13 @@ body {
     z-index: -1;
 }
 
-/* Título Animado */
+/* ===== HEADER ===== */
 .modern-header {
     text-align: center;
     padding: 3rem 1rem 1rem;
-    animation: floatTitle 4s ease-in-out infinite; /* Flotación suave */
+    animation: floatTitle 4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
 }
 
 .brand-title {
@@ -57,14 +51,10 @@ body {
     font-weight: 800;
     color: #f10797;
     letter-spacing: -1.5px;
-    
-    /* Contorno sutil */
-    -webkit-text-stroke: 1px rgba(0,0,0,0.5); 
+    -webkit-text-stroke: 1px rgba(0,0,0,0.5);
     text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
 }
 
-
-/* Animación de colores en la palabra "Delights" */
 .pastel-text {
     background: linear-gradient(45deg, #e484cf, #e92375, #207fac);
     background-size: 200% 200%;
@@ -74,28 +64,96 @@ body {
 }
 
 .brand-subtitle {
-    /* Cambio de fuente */
     font-family: 'fantasy', papyrus, sans-serif;
-    
-    /* Cambio de color (puedes usar nombres, hex o rgba) */
-    color: #797c74; 
-    
-    /* Tamaño y peso */
+    color: #797c74;
     font-size: 1.8rem;
     font-weight: 300;
-    
-    /* Opcional: Centrado y espaciado */
     text-align: center;
     margin-top: 0.5rem;
     letter-spacing: 0.5px;
 }
 
-/* Layout del Carrusel (Animación Flex) */
+/* ===== "BY MELINDA VILLALTA" MEJORADO ===== */
+.brand-author {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #555;
+    margin-top: 0.3rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.heart-icon {
+    color: #ff6bcb;
+    display: inline-block;
+    animation: floatSimple 2s ease-in-out infinite;
+    font-size: 1.2rem;
+}
+
+.by-text {
+    font-weight: 300;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.author-name {
+    background: linear-gradient(135deg, #ff6bcb, #e1306c, #ff6b6b);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 4s ease infinite;
+    font-weight: 800;
+}
+
+/* ===== INSTAGRAM LINK MEJORADO ===== */
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #feda77, #d62976, #962fbf, #4f5bd5);
+    background-size: 200% 200%;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(225, 48, 108, 0.25);
+    border: none;
+    letter-spacing: 0.3px;
+    animation: gradientFlow 4s ease infinite;
+}
+
+.instagram-link:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 30px rgba(225, 48, 108, 0.4);
+}
+
+.instagram-link:active {
+    transform: scale(0.95);
+}
+
+.ig-icon {
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+/* ===== CARRUSEL ===== */
 .menu-section {
     padding: 2rem 1rem 4rem;
     flex-grow: 1;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .carousel-container {
@@ -117,11 +175,11 @@ body {
     height: 100%;
 }
 
-/* Tarjetas y Animación Flex */
+/* ===== TARJETAS ===== */
 .card {
     background: var(--white);
     border-radius: 24px;
-    flex: 1; /* Comportamiento base de flexbox */
+    flex: 1;
     min-width: 240px;
     transition: flex 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
                 transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
@@ -131,22 +189,71 @@ body {
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid #f7fafc;
-}
-
-.img-wrapper {
-    width: 100%;
-    height: 180px;
-    border-radius: 24px 24px 0 0;
     overflow: hidden;
 }
 
-.card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
+.card.active {
+    flex: 1.25;
+    transform: scale(1.02);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(248, 150, 166, 0.15);
+    border-color: transparent;
 }
 
+.card.active .img-wrapper img {
+    transform: scale(1.08);
+}
+
+/* ===== IMÁGENES MÁS GRANDES ===== */
+.img-wrapper {
+    width: 100%;
+    height: 260px;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.slider-track img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover .img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* ===== BOTONES DEL SLIDER ===== */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 10;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover .slider-btn {
+    opacity: 1;
+}
+
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+/* ===== CONTENIDO ===== */
 .card-content {
     padding: 1.5rem;
     display: flex;
@@ -168,7 +275,7 @@ body {
     color: #718096;
 }
 
-/* Badges Tonos Pastel */
+/* ===== BADGES ===== */
 .badge {
     font-size: 0.75rem;
     font-weight: 600;
@@ -182,99 +289,7 @@ body {
 .badge-lavanda { background: #faf5ff; color: #6b46c1; }
 .badge-amarillo { background: #fffff0; color: #975a16; }
 
-/* Efecto de Tarjeta Activa (Se expande usando flex) */
-.card.active {
-    flex: 1.25; /* Ocupa más espacio en el contenedor flex */
-    transform: scale(1.02);
-    opacity: 1;
-    z-index: 10;
-    box-shadow: 0 20px 40px rgba(248, 150, 166, 0.15);
-    border-color: transparent;
-}
-
-.card.active .img-wrapper img {
-    transform: scale(1.08); 
-}
-/* Asegura que el contenedor de imágenes sea el marco */
-.img-wrapper {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-    border-radius: 24px 24px 0 0;
-}
-
-/* El carrusel debe ocupar el 100% */
-.slider-track {
-    display: flex;
-    transition: transform 0.5s ease;
-    height: 100%;
-}
-
-.slider-track img {
-    min-width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Estilo moderno para los botones */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    z-index: 10;
-    border-radius: 50%;
-    backdrop-filter: blur(4px);
-    opacity: 0; /* Ocultos por defecto */
-    transition: 0.3s;
-}
-
-/* Aparecen al pasar el mouse por encima de la tarjeta */
-.card:hover .slider-btn {
-    opacity: 1;
-}
-
-.slider-btn.prev { left: 10px; }
-.slider-btn.next { right: 10px; }
-/* Botones y UI interactiva */
-.btn-flavors, .btn-wa {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.btn-flavors {
-    background: var(--bg-light);
-    color: var(--primary-hover);
-    border: 1px solid #ffe4e8;
-}
-
-.btn-flavors:hover {
-    background: #ffe4e8;
-    color: #d03c58;
-}
-
-.btn-wa {
-    background: var(--primary);
-    color: var(--white);
-    box-shadow: 0 8px 20px rgba(248, 150, 166, 0.3);
-}
-
-.btn-wa:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(248, 150, 166, 0.4);
-}
-
-/* Menú de sabores */
+/* ===== SABORES ===== */
 .flavors-container {
     width: 100%;
     margin-bottom: 1rem;
@@ -283,7 +298,13 @@ body {
     padding: 0.5rem;
 }
 
-.lista-sabores { list-style: none; }
+.flavors-container.oculto {
+    display: none;
+}
+
+.lista-sabores {
+    list-style: none;
+}
 
 .lista-sabores li {
     font-size: 0.85rem;
@@ -300,7 +321,7 @@ body {
     color: #d03c58;
 }
 
-/* Flechas */
+/* ===== FLECHAS DE NAVEGACIÓN ===== */
 .nav-arrow {
     background: var(--white);
     border: 1px solid #edf2f7;
@@ -324,9 +345,242 @@ body {
     transform: scale(1.1);
 }
 
-.oculto { display: none !important; }
+/* ===== TOPPINGS MEJORADOS ===== */
+.toppings-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
 
-/* Keyframes */
+.toppings-fixed-corner {
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 3px solid rgb(236, 16, 170);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.toppings-fixed-corner:hover {
+    transform: rotate(360deg) scale(1.05);
+    box-shadow: 0 8px 30px rgba(236, 16, 170, 0.3);
+}
+
+.toppings-label {
+    background: linear-gradient(135deg, #ff6bcb, #ff6b6b);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(236, 16, 170, 0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: floatSimple 2s ease-in-out infinite;
+}
+
+.toppings-hint {
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.3);
+    padding: 2px 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    animation: floatSimple 2.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+    white-space: nowrap;
+}
+
+/* ===== BANNER CON OLAS ===== */
+.wave-banner {
+    background: linear-gradient(135deg, #ff6bcb 0%, #ff6b6b 50%, #ff6bcb 100%);
+    background-size: 200% 200%;
+    padding: 50px 20px 60px 20px;
+    margin-top: 40px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -10px 30px rgba(236, 16, 170, 0.1);
+    z-index: 1;
+}
+
+.wave-banner .wave {
+    position: absolute;
+    bottom: -5px;
+    left: -50%;
+    width: 200%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    animation: waveFlow 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.wave-banner .wave:nth-child(2) {
+    bottom: -15px;
+    height: 90px;
+    animation: waveFlow2 10s ease-in-out infinite;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 40% 60% 0 0 / 80% 70% 0 0;
+    animation-delay: -2s;
+}
+
+.wave-banner .wave:nth-child(3) {
+    bottom: -25px;
+    height: 110px;
+    animation: waveFlow 12s ease-in-out infinite reverse;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 60% 40% 0 0 / 60% 80% 0 0;
+    animation-delay: -4s;
+}
+
+.wave-banner .wave-top {
+    position: absolute;
+    top: -5px;
+    left: -50%;
+    width: 200%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    animation: waveFlow2 9s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.wave-banner .wave-top:nth-child(4) {
+    top: -15px;
+    height: 70px;
+    animation: waveFlow 11s ease-in-out infinite reverse;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 40% 60% / 0 0 70% 80%;
+    animation-delay: -3s;
+}
+
+.wave-banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.wave-banner-text {
+    font-size: 2rem;
+    font-weight: 800;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    margin-bottom: 5px;
+}
+
+.wave-banner-subtext {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.15);
+    margin-bottom: 8px;
+}
+
+.wave-banner-donuts {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.wave-donut {
+    font-size: 2.8rem;
+    animation: floatSimple 2.5s ease-in-out infinite;
+    display: inline-block;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    transition: all 0.3s ease;
+}
+
+.wave-donut:hover {
+    transform: scale(1.3) rotate(20deg);
+}
+
+.wave-donut:nth-child(1) { animation-delay: 0s; }
+.wave-donut:nth-child(2) { animation-delay: 0.3s; }
+.wave-donut:nth-child(3) { animation-delay: 0.6s; }
+.wave-donut:nth-child(4) { animation-delay: 0.9s; }
+.wave-donut:nth-child(5) { animation-delay: 1.2s; }
+.wave-donut:nth-child(6) { animation-delay: 1.5s; }
+
+/* ===== CRÉDITO ===== */
+.credit {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    font-size: 0.7rem;
+    color: rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.8);
+    padding: 4px 14px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.credit:hover {
+    color: rgba(236, 16, 170, 0.8);
+    transform: translateX(-50%) scale(1.05);
+}
+
+.credit .instagram-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #feda77, #d62976, #962fbf, #4f5bd5);
+    border-radius: 3px;
+    color: white;
+    font-size: 8px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.credit a {
+    color: #e1306c;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.credit a:hover {
+    color: #ff6bcb;
+    text-decoration: underline;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* =========================================================== */
+/* ====== KEYFRAMES ====== */
+/* =========================================================== */
+
 @keyframes floatTitle {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
@@ -337,14 +591,91 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
+@keyframes floatSimple {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
+}
+
+@keyframes waveFlow {
+    0% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(-25%) scaleY(1.1); }
+    100% { transform: translateX(-50%) scaleY(1); }
+}
+
+@keyframes waveFlow2 {
+    0% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(-30%) scaleY(0.9); }
+    100% { transform: translateX(-60%) scaleY(1); }
+}
+
 /* =========================================================== */
-/* ====== ARREGLO TOTAL PARA MÓVIL - PONER AL FINAL DEL CSS ====== */
+/* ====== RESPONSIVE - ARREGLO TOTAL PARA MÓVIL ====== */
 /* =========================================================== */
 
 @media (max-width: 768px) {
-    /* === RESET FORZADO PARA MÓVIL === */
+    /* === HEADER === */
+    .modern-header {
+        padding: 15px 10px 5px !important;
+    }
     
-    /* El carrusel debe ser scroll horizontal */
+    .brand-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.85rem !important;
+    }
+    
+    .brand-author {
+        font-size: 1rem !important;
+        gap: 4px !important;
+    }
+    
+    .heart-icon {
+        font-size: 1rem !important;
+    }
+    
+    .by-text {
+        font-size: 0.75rem !important;
+    }
+    
+    .instagram-link {
+        font-size: 0.7rem !important;
+        padding: 6px 14px !important;
+        gap: 5px !important;
+    }
+    
+    .ig-icon {
+        font-size: 0.9rem !important;
+    }
+
+    /* === TOPPINGS === */
+    .toppings-container {
+        top: 8px !important;
+        right: 8px !important;
+        gap: 2px !important;
+    }
+    
+    .toppings-fixed-corner {
+        width: 70px !important;
+        border-radius: 8px !important;
+        border-width: 2px !important;
+    }
+    
+    .toppings-label {
+        font-size: 0.45rem !important;
+        padding: 2px 8px !important;
+        border-radius: 8px !important;
+    }
+    
+    .toppings-hint {
+        font-size: 0.35rem !important;
+        padding: 1px 6px !important;
+        display: none; /* Oculto en móvil para no saturar */
+    }
+
+    /* === CARRUSEL - ARREGLO TOTAL === */
     .carousel-container {
         display: block !important;
         padding: 0 5px !important;
@@ -366,7 +697,7 @@ body {
         justify-content: flex-start !important;
     }
     
-    /* Cada tarjeta ocupa el ancho que le corresponde */
+    /* === TARJETAS EN MÓVIL === */
     .card {
         flex: 0 0 70% !important;
         min-width: 200px !important;
@@ -380,7 +711,6 @@ body {
         box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
     }
     
-    /* Quitamos efectos de hover/active que rompen en móvil */
     .card:hover {
         transform: none !important;
         flex: 0 0 70% !important;
@@ -392,13 +722,12 @@ body {
         opacity: 1 !important;
     }
     
-    /* Imagen más pequeña */
+    /* === IMÁGENES MÁS GRANDES EN MÓVIL === */
     .img-wrapper {
-        height: 150px !important;
+        height: 200px !important;
         border-radius: 16px 16px 0 0 !important;
     }
     
-    /* Contenido más compacto */
     .card-content {
         padding: 12px 14px 16px !important;
     }
@@ -419,7 +748,7 @@ body {
         margin-bottom: 8px !important;
     }
     
-    /* Botones de slider dentro de la tarjeta */
+    /* === BOTONES SLIDER === */
     .slider-btn {
         opacity: 0.7 !important;
         width: 24px !important;
@@ -431,7 +760,7 @@ body {
     .slider-btn.prev { left: 4px !important; }
     .slider-btn.next { right: 4px !important; }
     
-    /* Flechas de navegación laterales */
+    /* === FLECHAS NAV === */
     .nav-arrow {
         width: 28px !important;
         height: 28px !important;
@@ -442,149 +771,4 @@ body {
         box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
     }
     
-    .nav-arrow svg {
-        width: 14px !important;
-        height: 14px !important;
-    }
-    
-    #arrow-left { left: 2px !important; }
-    #arrow-right { right: 2px !important; }
-    
-    /* === HEADER MÁS COMPACTO === */
-    .modern-header {
-        padding: 15px 10px 5px !important;
-    }
-    
-    .brand-title {
-        font-size: 2.2rem !important;
-    }
-    
-    .brand-subtitle {
-        font-size: 0.85rem !important;
-    }
-    
-    .brand-author {
-        font-size: 0.85rem !important;
-    }
-    
-    .instagram-link {
-        font-size: 0.7rem !important;
-        padding: 5px 12px !important;
-    }
-    
-    /* === TOPPINGS MÁS PEQUEÑOS === */
-    .toppings-container {
-        top: 8px !important;
-        right: 8px !important;
-        gap: 2px !important;
-    }
-    
-    .toppings-fixed-corner {
-        width: 60px !important;
-        border-radius: 8px !important;
-        border-width: 1.5px !important;
-    }
-    
-    .toppings-label {
-        font-size: 0.4rem !important;
-        padding: 1px 6px !important;
-        border-radius: 8px !important;
-    }
-    
-    /* === BANNER MÁS PEQUEÑO === */
-    .wave-banner {
-        padding: 20px 12px 30px 12px !important;
-        min-height: 130px !important;
-        margin-top: 20px !important;
-    }
-    
-    .wave-banner .wave {
-        height: 30px !important;
-    }
-    
-    .wave-banner .wave:nth-child(2) {
-        height: 40px !important;
-    }
-    
-    .wave-banner .wave:nth-child(3) {
-        height: 50px !important;
-    }
-    
-    .wave-banner .wave-top {
-        height: 20px !important;
-    }
-    
-    .wave-banner .wave-top:nth-child(4) {
-        height: 30px !important;
-    }
-    
-    .wave-banner-text {
-        font-size: 1.2rem !important;
-    }
-    
-    .wave-banner-subtext {
-        font-size: 0.7rem !important;
-    }
-    
-    .wave-donut {
-        font-size: 1.6rem !important;
-    }
-    
-    .wave-banner-donuts {
-        gap: 6px !important;
-    }
-    
-    /* === CRÉDITO MÁS PEQUEÑO === */
-    .credit {
-        font-size: 0.45rem !important;
-        padding: 2px 8px !important;
-        bottom: 4px !important;
-        gap: 3px !important;
-    }
-    
-    .credit .instagram-icon {
-        width: 9px !important;
-        height: 9px !important;
-        font-size: 5px !important;
-        line-height: 9px !important;
-    }
-    
-    /* === SABORES EN MÓVIL === */
-    .lista-sabores li {
-        font-size: 0.7rem !important;
-        padding: 4px 8px !important;
-    }
-    
-    .flavors-container {
-        padding: 0.3rem !important;
-    }
-}
-
-/* === PARA MÓVILES MUY PEQUEÑOS === */
-@media (max-width: 420px) {
-    .card {
-        flex: 0 0 80% !important;
-        min-width: 160px !important;
-        max-width: 220px !important;
-    }
-    
-    .img-wrapper {
-        height: 120px !important;
-    }
-    
-    .brand-title {
-        font-size: 1.6rem !important;
-    }
-    
-    .toppings-fixed-corner {
-        width: 45px !important;
-    }
-    
-    .wave-banner-text {
-        font-size: 1rem !important;
-    }
-    
-    .wave-donut {
-        font-size: 1.3rem !important;
-    }
-}
+    .nav
