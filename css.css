@@ -337,3 +337,254 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+/* =========================================================== */
+/* ====== ARREGLO TOTAL PARA MÓVIL - PONER AL FINAL DEL CSS ====== */
+/* =========================================================== */
+
+@media (max-width: 768px) {
+    /* === RESET FORZADO PARA MÓVIL === */
+    
+    /* El carrusel debe ser scroll horizontal */
+    .carousel-container {
+        display: block !important;
+        padding: 0 5px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    .carousel-track {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 12px !important;
+        padding: 10px 5px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x mandatory !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* Cada tarjeta ocupa el ancho que le corresponde */
+    .card {
+        flex: 0 0 70% !important;
+        min-width: 200px !important;
+        max-width: 260px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        scroll-snap-align: start !important;
+        margin: 0 !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+    }
+    
+    /* Quitamos efectos de hover/active que rompen en móvil */
+    .card:hover {
+        transform: none !important;
+        flex: 0 0 70% !important;
+    }
+    
+    .card.active {
+        flex: 0 0 70% !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    
+    /* Imagen más pequeña */
+    .img-wrapper {
+        height: 150px !important;
+        border-radius: 16px 16px 0 0 !important;
+    }
+    
+    /* Contenido más compacto */
+    .card-content {
+        padding: 12px 14px 16px !important;
+    }
+    
+    .card-content h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 3px !important;
+    }
+    
+    .card-content p {
+        font-size: 0.75rem !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .badge {
+        font-size: 0.6rem !important;
+        padding: 3px 10px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    /* Botones de slider dentro de la tarjeta */
+    .slider-btn {
+        opacity: 0.7 !important;
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 10px !important;
+        padding: 0 !important;
+    }
+    
+    .slider-btn.prev { left: 4px !important; }
+    .slider-btn.next { right: 4px !important; }
+    
+    /* Flechas de navegación laterales */
+    .nav-arrow {
+        width: 28px !important;
+        height: 28px !important;
+        flex-shrink: 0 !important;
+        padding: 0 !important;
+        background: rgba(255,255,255,0.85) !important;
+        border: 1px solid #eee !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    }
+    
+    .nav-arrow svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    
+    #arrow-left { left: 2px !important; }
+    #arrow-right { right: 2px !important; }
+    
+    /* === HEADER MÁS COMPACTO === */
+    .modern-header {
+        padding: 15px 10px 5px !important;
+    }
+    
+    .brand-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.85rem !important;
+    }
+    
+    .brand-author {
+        font-size: 0.85rem !important;
+    }
+    
+    .instagram-link {
+        font-size: 0.7rem !important;
+        padding: 5px 12px !important;
+    }
+    
+    /* === TOPPINGS MÁS PEQUEÑOS === */
+    .toppings-container {
+        top: 8px !important;
+        right: 8px !important;
+        gap: 2px !important;
+    }
+    
+    .toppings-fixed-corner {
+        width: 60px !important;
+        border-radius: 8px !important;
+        border-width: 1.5px !important;
+    }
+    
+    .toppings-label {
+        font-size: 0.4rem !important;
+        padding: 1px 6px !important;
+        border-radius: 8px !important;
+    }
+    
+    /* === BANNER MÁS PEQUEÑO === */
+    .wave-banner {
+        padding: 20px 12px 30px 12px !important;
+        min-height: 130px !important;
+        margin-top: 20px !important;
+    }
+    
+    .wave-banner .wave {
+        height: 30px !important;
+    }
+    
+    .wave-banner .wave:nth-child(2) {
+        height: 40px !important;
+    }
+    
+    .wave-banner .wave:nth-child(3) {
+        height: 50px !important;
+    }
+    
+    .wave-banner .wave-top {
+        height: 20px !important;
+    }
+    
+    .wave-banner .wave-top:nth-child(4) {
+        height: 30px !important;
+    }
+    
+    .wave-banner-text {
+        font-size: 1.2rem !important;
+    }
+    
+    .wave-banner-subtext {
+        font-size: 0.7rem !important;
+    }
+    
+    .wave-donut {
+        font-size: 1.6rem !important;
+    }
+    
+    .wave-banner-donuts {
+        gap: 6px !important;
+    }
+    
+    /* === CRÉDITO MÁS PEQUEÑO === */
+    .credit {
+        font-size: 0.45rem !important;
+        padding: 2px 8px !important;
+        bottom: 4px !important;
+        gap: 3px !important;
+    }
+    
+    .credit .instagram-icon {
+        width: 9px !important;
+        height: 9px !important;
+        font-size: 5px !important;
+        line-height: 9px !important;
+    }
+    
+    /* === SABORES EN MÓVIL === */
+    .lista-sabores li {
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+    }
+    
+    .flavors-container {
+        padding: 0.3rem !important;
+    }
+}
+
+/* === PARA MÓVILES MUY PEQUEÑOS === */
+@media (max-width: 420px) {
+    .card {
+        flex: 0 0 80% !important;
+        min-width: 160px !important;
+        max-width: 220px !important;
+    }
+    
+    .img-wrapper {
+        height: 120px !important;
+    }
+    
+    .brand-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .toppings-fixed-corner {
+        width: 45px !important;
+    }
+    
+    .wave-banner-text {
+        font-size: 1rem !important;
+    }
+    
+    .wave-donut {
+        font-size: 1.3rem !important;
+    }
+}
