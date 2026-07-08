@@ -7,7 +7,428 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css.css">
     <style>
-        /* Estilos para el botón de Instagram */
+        /* ===== ANIMACIONES ===== */
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatSimple {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ===== ANIMACIÓN DE OLAS MEJORADA ===== */
+        @keyframes waveFlow {
+            0% { 
+                transform: translateX(0) scaleY(1) rotate(0deg);
+            }
+            25% {
+                transform: translateX(-15%) scaleY(1.05) rotate(1deg);
+            }
+            50% { 
+                transform: translateX(-30%) scaleY(1) rotate(0deg);
+            }
+            75% {
+                transform: translateX(-15%) scaleY(0.95) rotate(-1deg);
+            }
+            100% { 
+                transform: translateX(0) scaleY(1) rotate(0deg);
+            }
+        }
+
+        @keyframes waveFlow2 {
+            0% { 
+                transform: translateX(0) scaleY(1) rotate(0deg);
+            }
+            33% {
+                transform: translateX(-20%) scaleY(0.95) rotate(-1deg);
+            }
+            66% { 
+                transform: translateX(-40%) scaleY(1.05) rotate(1deg);
+            }
+            100% { 
+                transform: translateX(0) scaleY(1) rotate(0deg);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ===== APLICACIÓN ===== */
+
+        /* IMÁGENES SIEMPRE VISIBLES */
+        .slider-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            opacity: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+            pointer-events: none;
+        }
+
+        .img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px 12px 0 0;
+            background: #f5f5f5;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+            width: 100%;
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(236, 16, 170, 0.15);
+        }
+
+        /* ===== SABORES DIRECTOS (SIN BOTÓN) ===== */
+        .flavors-container {
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .flavors-container.oculto {
+            display: none;
+        }
+
+        .flavors-container:not(.oculto) {
+            display: block;
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .lista-sabores {
+            padding-left: 0;
+            margin: 10px 0;
+            list-style: none;
+        }
+
+        .lista-sabores li {
+            padding: 6px 12px;
+            margin: 4px 0;
+            background: rgba(236, 16, 170, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: default;
+            font-size: 0.9rem;
+            border-left: 3px solid #ff6bcb;
+        }
+
+        .lista-sabores li:hover {
+            transform: translateX(5px);
+            background: rgba(236, 16, 170, 0.1);
+        }
+
+        /* ===== TÍTULO ===== */
+        .brand-title {
+            background: linear-gradient(90deg, #ff6b6b, #ff6bcb, #ff6b6b);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            display: inline-block;
+        }
+
+        .brand-title .pastel-text {
+            background: linear-gradient(90deg, #ff6bcb, #ff6b6b, #ff6bcb);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            display: inline-block;
+        }
+
+        /* ===== TOPPINGS ===== */
+        .toppings-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .toppings-fixed-corner {
+            width: 150px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid rgb(236, 16, 170);
+            transition: all 0.5s ease;
+            display: block;
+        }
+
+        .toppings-fixed-corner:hover {
+            transform: rotate(360deg) scale(1.1);
+            transition: transform 0.8s ease;
+        }
+
+        .toppings-label {
+            background: linear-gradient(135deg, #ff6bcb, #ff6b6b);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(236, 16, 170, 0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: floatSimple 2s ease-in-out infinite;
+        }
+
+        /* ===== BANNER CON OLAS PROFESIONAL ===== */
+        .wave-banner {
+            background: linear-gradient(135deg, #ff6bcb 0%, #ff6b6b 50%, #ff6bcb 100%);
+            background-size: 200% 200%;
+            padding: 60px 20px 70px 20px;
+            margin-top: 50px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 -10px 30px rgba(236, 16, 170, 0.15);
+        }
+
+        /* Olas principales */
+        .wave-banner .wave {
+            position: absolute;
+            bottom: -5px;
+            left: -50%;
+            width: 200%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            animation: waveFlow 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .wave-banner .wave:nth-child(2) {
+            bottom: -15px;
+            height: 100px;
+            animation: waveFlow2 10s ease-in-out infinite;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 40% 60% 0 0 / 80% 70% 0 0;
+            animation-delay: -2s;
+        }
+
+        .wave-banner .wave:nth-child(3) {
+            bottom: -25px;
+            height: 120px;
+            animation: waveFlow 12s ease-in-out infinite reverse;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 60% 40% 0 0 / 60% 80% 0 0;
+            animation-delay: -4s;
+        }
+
+        /* Olas superiores */
+        .wave-banner .wave-top {
+            position: absolute;
+            top: -5px;
+            left: -50%;
+            width: 200%;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+            animation: waveFlow2 9s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .wave-banner .wave-top:nth-child(4) {
+            top: -15px;
+            height: 80px;
+            animation: waveFlow 11s ease-in-out infinite reverse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 0 40% 60% / 0 0 70% 80%;
+            animation-delay: -3s;
+        }
+
+        /* Partículas brillantes */
+        .wave-banner .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .wave-banner .sparkle:nth-child(5) { top: 20%; left: 10%; animation-delay: 0s; width: 8px; height: 8px; }
+        .wave-banner .sparkle:nth-child(6) { top: 30%; right: 15%; animation-delay: 1s; width: 5px; height: 5px; }
+        .wave-banner .sparkle:nth-child(7) { bottom: 40%; left: 20%; animation-delay: 0.5s; width: 7px; height: 7px; }
+        .wave-banner .sparkle:nth-child(8) { bottom: 30%; right: 10%; animation-delay: 1.5s; width: 4px; height: 4px; }
+        .wave-banner .sparkle:nth-child(9) { top: 50%; left: 50%; animation-delay: 0.8s; width: 6px; height: 6px; }
+
+        .wave-banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .wave-banner-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .wave-banner-subtext {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+        }
+
+        .wave-banner-donuts {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .wave-donut {
+            font-size: 3rem;
+            animation: floatSimple 2.5s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .wave-donut:hover {
+            transform: scale(1.3) rotate(20deg);
+            filter: drop-shadow(0 6px 20px rgba(0,0,0,0.25));
+        }
+
+        .wave-donut:nth-child(1) { animation-delay: 0s; }
+        .wave-donut:nth-child(2) { animation-delay: 0.3s; }
+        .wave-donut:nth-child(3) { animation-delay: 0.6s; }
+        .wave-donut:nth-child(4) { animation-delay: 0.9s; }
+        .wave-donut:nth-child(5) { animation-delay: 1.2s; }
+        .wave-donut:nth-child(6) { animation-delay: 1.5s; }
+
+        /* ===== CRÉDITO PEQUEÑO CON LOGO INSTAGRAM ===== */
+        .credit {
+            position: fixed;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            font-size: 0.6rem;
+            color: rgba(0,0,0,0.25);
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            background: rgba(255,255,255,0.7);
+            padding: 3px 12px;
+            border-radius: 10px;
+            backdrop-filter: blur(3px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .credit:hover {
+            color: rgba(236, 16, 170, 0.8);
+            background: rgba(255,255,255,0.9);
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .credit .instagram-icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: radial-gradient(circle at 30% 30%, #feda77, #d62976, #962fbf, #4f5bd5);
+            border-radius: 3px;
+            color: white;
+            font-size: 8px;
+            line-height: 14px;
+            text-align: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .credit a {
+            color: #e1306c;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .credit a:hover {
+            color: #ff6bcb;
+            text-decoration: underline;
+        }
+
+        .credit .separator {
+            opacity: 0.3;
+        }
+
+        /* ===== TRANSICIONES ===== */
+
+        .nav-arrow {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.1);
+            background: rgba(236, 16, 170, 0.08);
+        }
+
+        .slider-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .slider-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(236, 16, 170, 0.2);
+        }
+
         .instagram-link {
             display: inline-flex;
             align-items: center;
@@ -20,26 +441,104 @@
             font-weight: 600;
             font-size: 0.9rem;
             margin-top: 10px;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
-        .instagram-link:hover { transform: scale(1.05); }
+        .instagram-link:hover { 
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(225, 48, 108, 0.3);
+        }
 
-        /* Estilo para la imagen de toppings fija en esquina */
-        .toppings-fixed-corner {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 270px; /*  tamaño */
-            z-index: 1000;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border: 2px solid rgb(236, 16, 170);
+        .badge {
+            animation: floatSimple 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .toppings-fixed-corner {
+                width: 100px;
+            }
+            
+            .toppings-label {
+                font-size: 0.6rem;
+                padding: 2px 8px;
+            }
+
+            .toppings-container {
+                top: 10px;
+                right: 10px;
+            }
+
+            .img-wrapper {
+                height: 200px;
+            }
+
+            .wave-banner {
+                min-height: 180px;
+                padding: 40px 15px 50px 15px;
+            }
+
+            .wave-banner-text {
+                font-size: 1.5rem;
+            }
+
+            .wave-banner-subtext {
+                font-size: 0.9rem;
+            }
+
+            .wave-donut {
+                font-size: 2.2rem;
+            }
+
+            .wave-banner .wave {
+                height: 50px;
+            }
+
+            .wave-banner .wave:nth-child(2) {
+                height: 60px;
+            }
+
+            .wave-banner .wave:nth-child(3) {
+                height: 70px;
+            }
+
+            .credit {
+                font-size: 0.5rem;
+                padding: 2px 10px;
+                bottom: 5px;
+                gap: 3px;
+            }
+
+            .credit .instagram-icon {
+                width: 12px;
+                height: 12px;
+                font-size: 7px;
+                line-height: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .credit {
+                font-size: 0.45rem;
+                padding: 2px 8px;
+                bottom: 3px;
+            }
+
+            .credit .instagram-icon {
+                width: 10px;
+                height: 10px;
+                font-size: 6px;
+                line-height: 10px;
+            }
         }
     </style>
 </head>
-<body>  <!-- Cover -->
-
-<img src="1000163761.png" alt="Toppings" class="toppings-fixed-corner"> <!-- Imagen de toppings fija en la esquina inferior derecha -->
+<body>
+    <!-- ===== TOPPINGS CON TEXTO ===== -->
+    <div class="toppings-container">
+        <span class="toppings-label">🧁 Toppings</span>
+        <img src="1000163761.png" alt="Toppings" class="toppings-fixed-corner">
+    </div>
 
     <div class="background-pastel-gradient"></div>
 
@@ -51,7 +550,8 @@
             📸 Síguenos en Instagram
         </a>
     </header>
-<!-- Estructura carrucel de productos -->
+
+    <!-- Estructura carrusel de productos -->
     <section class="menu-section">
         <div class="carousel-container">
             <button class="nav-arrow" id="arrow-left">
@@ -79,12 +579,10 @@
                         <span class="badge badge-lavanda">🎂 Personalizados</span>
                         <div class="flavors-container oculto">
                             <ul class="lista-sabores">
-                                <li data-sabor="Chocolate Suizo">Chocolate Suizo</li>
-                                <li data-sabor="Vainilla Gourmet">Vainilla Gourmet</li>
+                                <li data-sabor="Chocolate Suizo">🍫 Chocolate Suizo</li>
+                                <li data-sabor="Vainilla Gourmet">🍦 Vainilla Gourmet</li>
                             </ul>
                         </div>
-                        <button class="btn-flavors">Ver Sabores</button>
-                        
                     </div>
                 </article>
 
@@ -100,16 +598,15 @@
                     </div>
                     <div class="card-content">
                         <h3>Crepas Especiales</h3>
-                        <p>Masa francesa original, delgada y con rellenos abundantes.</p>
+                        <p>Masa original, delgada y con rellenos abundantes
+                            Puedes escoger entre 2 o tres Toppings.</p>
                         <span class="badge badge-menta">⭐ Top Ventas</span>
                         <div class="flavors-container oculto">
                             <ul class="lista-sabores">
-                                <li data-sabor="Nutella y Fresa">Nutella y Fresa</li>
-                                <li data-sabor="Dulce de Leche">Dulce de Leche</li>
+                                <li data-sabor="Nutella y Fresa">🍫🍓 Nutella y Fresa</li>
+                                <li data-sabor="Dulce de Leche">🥛 Dulce de Leche</li>
                             </ul>
                         </div>
-                        <button class="btn-flavors">Ver Sabores</button>
-                        
                     </div>
                 </article>
 
@@ -128,13 +625,11 @@
                         <span class="badge badge-rosa">🍓 Clásico Indiscutible</span>
                         <div class="flavors-container oculto">
                             <ul class="lista-sabores">
-                                <li data-sabor="Tradicionales">Tradicionales</li>
-                                <li data-sabor="Con Leche Condensada">Con Leche Condensada</li>
-                                <li data-sabor="Con Nutella">Con Nutella</li>
+                                <li data-sabor="Tradicionales">🍓 Tradicionales</li>
+                                <li data-sabor="Con Leche Condensada">🥛 Con Leche Condensada</li>
+                                <li data-sabor="Con Nutella">🍫 Con Nutella</li>
                             </ul>
                         </div>
-                        <button class="btn-flavors">Ver Opciones</button>
-                        <!-- <button class="btn-wa oculto" data-producto="Fresas con Crema">Pedir Ahora 📲</button> -->
                     </div>
                 </article>
 
@@ -152,12 +647,10 @@
                         <span class="badge badge-amarillo">🍩 Ideales para regalar</span>
                         <div class="flavors-container oculto">
                             <ul class="lista-sabores">
-                                <li data-sabor="Caja de 6">Caja de 6 (Mixtas)</li>
-                                <li data-sabor="Caja de 12">Caja de 12 (Mixtas)</li>
+                                <li data-sabor="Caja de 6">📦 Caja de 6 (Mixtas)</li>
+                                <li data-sabor="Caja de 12">📦 Caja de 12 (Mixtas)</li>
                             </ul>
                         </div>
-                        <button class="btn-flavors">Ver Opciones</button>
-                        <!--  <button class="btn-wa oculto" data-producto="Caja Mini Donas">Pedir Ahora 📲</button> boton papa pedir aun no confirmado--> 
                     </div>
                 </article>
 
@@ -168,6 +661,46 @@
             </button>
         </div>
     </section>
+
+    <!-- ===== BANNER CON OLAS  ===== -->
+    <div class="wave-banner">
+        <!-- Capas de olas -->
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave-top"></div>
+        <div class="wave-top"></div>
+        
+        <!-- Partículas brillantes -->
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        
+        <div class="wave-banner-content">
+            <div class="wave-banner-text">
+                ¡Bienvenido a Sweet Delights!
+            </div>
+            <div class="wave-banner-subtext">
+                Endulza tu vida con nuestras delicias
+            </div>
+            <div class="wave-banner-donuts">
+                <span class="wave-donut">🍩</span>
+                <span class="wave-donut">🍩</span>
+                <span class="wave-donut">🍩</span>
+                <span class="wave-donut">🍩</span>
+                <span class="wave-donut">🍩</span>
+                <span class="wave-donut">🍩</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CRÉDITO PEQUEÑO CON LOGO INSTAGRAM ===== -->
+    <div class="credit">
+        <span class="instagram-icon">📷</span>
+        Creado por <a href="https://www.instagram.com/GeisonC28" target="_blank">@GeisonC28</a>
+    </div>
 
     <script src="js.js"></script>
 </body>
