@@ -2,14 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- === ESTA ES LA LLAVE PARA MÓVIL === -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Sweet Delights | Menú Interactivo</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css.css">
     <style>
-        /* ===== SOLO AGREGADOS PARA MÓVIL - RESPETA TU CSS ===== */
+        /* ===== SOLO AJUSTES MÍNIMOS PARA MÓVIL ===== */
         
-        /* Asegurar que el body use tu fondo */
+        /* Esto asegura que en móvil no se corte nada */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Tu fondo se mantiene exactamente igual */
         body {
             background-image: url('Copilot_20260630_015101.png');
             background-position: center;
@@ -18,16 +25,6 @@
             background-attachment: fixed;
             background-color: #fef6f8;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Tu fondo pastel se mantiene */
-        .background-pastel-gradient {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at top left, #ffe4e8 0%, transparent 40%),
-                        radial-gradient(circle at bottom right, #e2f1ff 0%, transparent 40%);
-            z-index: -1;
         }
 
         /* ===== TOPPINGS (se mantiene igual) ===== */
@@ -73,7 +70,7 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* ===== BANNER CON OLAS (se mantiene) ===== */
+        /* ===== BANNER CON OLAS ===== */
         .wave-banner {
             background: linear-gradient(135deg, #ff6bcb 0%, #ff6b6b 50%, #ff6bcb 100%);
             padding: 50px 20px 60px 20px;
@@ -217,6 +214,7 @@
             align-items: center;
             gap: 5px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .credit:hover {
@@ -254,62 +252,58 @@
         /* ============================================ */
 
         @media (max-width: 768px) {
-            /* HEADER - RESPETANDO TU CSS */
+            /* HEADER - MÁS COMPACTO */
             .modern-header {
-                padding: 1.5rem 1rem 0.5rem;
+                padding: 1.5rem 0.8rem 0.5rem !important;
             }
 
             .brand-title {
-                font-size: 2.5rem !important;
+                font-size: 2.2rem !important;
             }
 
             .brand-subtitle {
-                font-size: 1.2rem !important;
+                font-size: 0.9rem !important;
+            }
+
+            .brand-author {
+                font-size: 0.9rem !important;
             }
 
             .instagram-link {
-                font-size: 0.75rem;
-                padding: 6px 14px;
+                font-size: 0.7rem !important;
+                padding: 5px 12px !important;
             }
 
             /* TOPPINGS - MÁS PEQUEÑO */
             .toppings-container {
-                top: 10px;
-                right: 10px;
+                top: 8px !important;
+                right: 8px !important;
             }
 
             .toppings-fixed-corner {
-                width: 80px;
+                width: 65px !important;
             }
 
             .toppings-label {
-                font-size: 0.5rem;
-                padding: 2px 8px;
+                font-size: 0.4rem !important;
+                padding: 1px 6px !important;
             }
 
-            /* CARRUSEL - RESPETANDO TU ESTRUCTURA */
+            /* CARRUSEL - QUE SE VEA */
             .carousel-container {
-                padding: 0 10px;
-                gap: 8px;
+                padding: 0 5px !important;
+                gap: 5px !important;
             }
 
             .carousel-track {
-                gap: 12px;
-                padding: 10px 0;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
+                gap: 10px !important;
+                padding: 10px 0 !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
             }
 
-            .carousel-track::-webkit-scrollbar {
-                display: none;
-            }
-
-            /* TARJETAS - SE MANTIENEN VISIBLES */
             .card {
-                min-width: 200px !important;
+                min-width: 180px !important;
                 flex: 0 0 auto !important;
                 opacity: 1 !important;
             }
@@ -317,134 +311,14 @@
             .card.active {
                 flex: 0 0 auto !important;
                 transform: none !important;
-                opacity: 1 !important;
             }
 
             .img-wrapper {
-                height: 160px !important;
+                height: 140px !important;
             }
 
             .card-content {
-                padding: 1rem !important;
-            }
-
-            .card-content h3 {
-                font-size: 1rem !important;
-            }
-
-            .card-content p {
-                font-size: 0.75rem !important;
-            }
-
-            .badge {
-                font-size: 0.65rem !important;
-                padding: 4px 10px !important;
-            }
-
-            .slider-btn {
-                opacity: 1 !important;
-                width: 26px;
-                height: 26px;
-                font-size: 11px;
-            }
-
-            .slider-btn.prev { left: 5px; }
-            .slider-btn.next { right: 5px; }
-
-            /* FLECHAS DE NAVEGACIÓN */
-            .nav-arrow {
-                width: 32px !important;
-                height: 32px !important;
-                flex-shrink: 0 !important;
-            }
-
-            .nav-arrow svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            /* BANNER */
-            .wave-banner {
-                padding: 30px 15px 40px 15px;
-                min-height: 160px;
-                margin-top: 30px;
-            }
-
-            .wave-banner .wave {
-                height: 40px;
-            }
-
-            .wave-banner .wave:nth-child(2) {
-                height: 50px;
-            }
-
-            .wave-banner .wave:nth-child(3) {
-                height: 60px;
-            }
-
-            .wave-banner .wave-top {
-                height: 30px;
-            }
-
-            .wave-banner .wave-top:nth-child(4) {
-                height: 40px;
-            }
-
-            .wave-banner-text {
-                font-size: 1.5rem;
-            }
-
-            .wave-banner-subtext {
-                font-size: 0.9rem;
-            }
-
-            .wave-donut {
-                font-size: 2.2rem;
-            }
-
-            .credit {
-                font-size: 0.55rem;
-                padding: 3px 10px;
-                bottom: 6px;
-            }
-
-            .credit .instagram-icon {
-                width: 11px;
-                height: 11px;
-                font-size: 6px;
-                line-height: 11px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand-title {
-                font-size: 2rem !important;
-            }
-
-            .brand-subtitle {
-                font-size: 1rem !important;
-            }
-
-            .carousel-container {
-                padding: 0 5px;
-                gap: 5px;
-            }
-
-            .carousel-track {
-                gap: 10px;
-                padding: 8px 0;
-            }
-
-            .card {
-                min-width: 170px !important;
-            }
-
-            .img-wrapper {
-                height: 130px !important;
-            }
-
-            .card-content {
-                padding: 0.75rem !important;
+                padding: 0.7rem !important;
             }
 
             .card-content h3 {
@@ -452,7 +326,7 @@
             }
 
             .card-content p {
-                font-size: 0.7rem !important;
+                font-size: 0.65rem !important;
             }
 
             .badge {
@@ -460,68 +334,131 @@
                 padding: 2px 8px !important;
             }
 
-            .lista-sabores li {
-                font-size: 0.7rem;
-                padding: 4px 8px;
+            .slider-btn {
+                opacity: 1 !important;
+                width: 22px !important;
+                height: 22px !important;
+                font-size: 9px !important;
             }
 
-            .toppings-fixed-corner {
-                width: 60px;
-            }
+            .slider-btn.prev { left: 3px !important; }
+            .slider-btn.next { right: 3px !important; }
 
-            .toppings-label {
-                font-size: 0.4rem;
-                padding: 1px 6px;
-            }
-
+            /* FLECHAS */
             .nav-arrow {
-                width: 26px !important;
-                height: 26px !important;
+                width: 28px !important;
+                height: 28px !important;
+                flex-shrink: 0 !important;
             }
 
             .nav-arrow svg {
-                width: 14px;
-                height: 14px;
+                width: 14px !important;
+                height: 14px !important;
+            }
+
+            /* BANNER */
+            .wave-banner {
+                padding: 25px 12px 35px 12px !important;
+                min-height: 140px !important;
+                margin-top: 25px !important;
+            }
+
+            .wave-banner .wave {
+                height: 35px !important;
+            }
+
+            .wave-banner .wave:nth-child(2) {
+                height: 45px !important;
+            }
+
+            .wave-banner .wave:nth-child(3) {
+                height: 55px !important;
+            }
+
+            .wave-banner .wave-top {
+                height: 25px !important;
+            }
+
+            .wave-banner .wave-top:nth-child(4) {
+                height: 35px !important;
             }
 
             .wave-banner-text {
-                font-size: 1.2rem;
+                font-size: 1.3rem !important;
+            }
+
+            .wave-banner-subtext {
+                font-size: 0.75rem !important;
             }
 
             .wave-donut {
-                font-size: 1.8rem;
+                font-size: 1.8rem !important;
             }
 
-            .wave-banner {
-                padding: 20px 12px 30px 12px;
-                min-height: 130px;
+            .wave-banner-donuts {
+                gap: 8px !important;
             }
 
             .credit {
-                font-size: 0.45rem;
-                padding: 2px 8px;
-                bottom: 4px;
+                font-size: 0.5rem !important;
+                padding: 2px 8px !important;
+                bottom: 5px !important;
             }
 
             .credit .instagram-icon {
-                width: 9px;
-                height: 9px;
-                font-size: 5px;
-                line-height: 9px;
+                width: 10px !important;
+                height: 10px !important;
+                font-size: 5px !important;
+                line-height: 10px !important;
             }
         }
 
-        @media (max-width: 380px) {
+        @media (max-width: 480px) {
+            .brand-title {
+                font-size: 1.8rem !important;
+            }
+
             .card {
                 min-width: 150px !important;
             }
 
             .img-wrapper {
-                height: 110px !important;
+                height: 120px !important;
+            }
+
+            .card-content h3 {
+                font-size: 0.75rem !important;
+            }
+
+            .card-content p {
+                font-size: 0.6rem !important;
+            }
+
+            .badge {
+                font-size: 0.5rem !important;
+                padding: 1px 6px !important;
+            }
+
+            .lista-sabores li {
+                font-size: 0.6rem !important;
+                padding: 3px 6px !important;
             }
 
             .toppings-fixed-corner {
-                width: 50px;
+                width: 50px !important;
+            }
+
+            .wave-banner-text {
+                font-size: 1rem !important;
+            }
+
+            .wave-donut {
+                font-size: 1.5rem !important;
+            }
+
+            .wave-banner {
+                padding: 20px 10px 30px 10px !important;
+                min-height: 110px !important;
             }
         }
     </style>
@@ -536,6 +473,7 @@
     <!-- TU FONDO PASTEL -->
     <div class="background-pastel-gradient"></div>
 
+    <!-- TU HEADER - EXACTAMENTE IGUAL -->
     <header class="modern-header">
         <h1 class="brand-title">Sweet <span class="pastel-text">Delights</span></h1>
         <p class="brand-subtitle">Dulzura premium a un clic de distancia.</p>
